@@ -1,0 +1,39 @@
+{
+  "name": "twain-js",
+  "version": "0.0.0",
+  "description": "A JavaScript interface for TWAIN.",
+  "main": "lib/twainh.js",
+  "scripts": {
+    "test": "node-gyp rebuild --directory test && mocha -gc --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codenstein/twain-js.git"
+  },
+  "keywords": [
+    "twain",
+    "struct",
+    "ref",
+    "c",
+    "c++",
+    "ffi"
+  ],
+  "author": "Martin Grossi <martin.grossi@enlightenedmouse.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codenstein/twain-js/issues"
+  },
+  "homepage": "https://github.com/codenstein/twain-js#readme",
+  "dependencies": {
+    "ffi": "^2.3.0",
+    "ref": "^1.3.5",
+    "ref-array": "^1.2.0",
+    "ref-struct": "github:enlightenedmouse/ref-struct",
+    "ref-union": "^1.0.1"
+  },
+  "devDependencies": {
+    "bindings": "^1.3.1",
+    "mocha": "^5.2.0",
+    "nan": "^2.12.1"
+  }
+}

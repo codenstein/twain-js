@@ -1,0 +1,11 @@
+# Test files
+test
+test-results.xml
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build
+
+# CI build definition files 
+azure-pipelines.yml
+.travis.yml
+appveyor.yml

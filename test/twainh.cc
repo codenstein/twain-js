@@ -1,31 +1,46 @@
 #include <nan.h>
-#include "../twain.h"
 #include <string.h>
+#include <limits.h>
+#include "../twain.h"
 
 using namespace v8;
 
+#undef max
+
+// req'd since size_t are 64-bit values on 64-bit Windows operating systems and
+// v8 does not support 64-bit numbers.
+int SizeTToInt(size_t data)
+{
+  if (data > std::numeric_limits<int>::max())
+  {
+    fprintf(stderr, "%s", "Invalid cast. size_t exceeds the numeric limit of int.\n");
+    abort();
+  }
+  return static_cast<int>(data);
+}
+
 #define STR(x) #x
 
-#define ADD_TYPE(types, type)                                                      \
-  {                                                                                \
-    v8::Local<v8::Object> _type = Nan::New<v8::Object>();                          \
-    _type->Set(Nan::New("size").ToLocalChecked(), Nan::New<Number>(sizeof(type))); \
-    types->Set(Nan::New(STR(type)).ToLocalChecked(), _type);                       \
+#define ADD_TYPE(types, type)                                                                  \
+  {                                                                                            \
+    v8::Local<v8::Object> _type = Nan::New<v8::Object>();                                      \
+    _type->Set(Nan::New("size").ToLocalChecked(), Nan::New<Number>(SizeTToInt(sizeof(type)))); \
+    types->Set(Nan::New(STR(type)).ToLocalChecked(), _type);                                   \
   }
 
 #define ADD_OFFSET(structs, type, member)                                                                                   \
   {                                                                                                                         \
     v8::Local<v8::Object> _type = Nan::To<v8::Object>(structs->Get(Nan::New(STR(type)).ToLocalChecked())).ToLocalChecked(); \
     v8::Local<v8::Object> offsets = Nan::To<v8::Object>(_type->Get(Nan::New("offsets").ToLocalChecked())).ToLocalChecked(); \
-    offsets->Set(Nan::New(STR(member)).ToLocalChecked(), Nan::New<Number>(offsetof(type, member)));                         \
+    offsets->Set(Nan::New(STR(member)).ToLocalChecked(), Nan::New<Number>(SizeTToInt(offsetof(type, member))));             \
   }
 
-#define ADD_STRUCT(structs, type)                                                    \
-  {                                                                                  \
-    v8::Local<v8::Object> _struct = Nan::New<v8::Object>();                          \
-    _struct->Set(Nan::New("size").ToLocalChecked(), Nan::New<Number>(sizeof(type))); \
-    _struct->Set(Nan::New("offsets").ToLocalChecked(), Nan::New<v8::Object>());      \
-    structs->Set(Nan::New(STR(type)).ToLocalChecked(), _struct);                     \
+#define ADD_STRUCT(structs, type)                                                                \
+  {                                                                                              \
+    v8::Local<v8::Object> _struct = Nan::New<v8::Object>();                                      \
+    _struct->Set(Nan::New("size").ToLocalChecked(), Nan::New<Number>(SizeTToInt(sizeof(type)))); \
+    _struct->Set(Nan::New("offsets").ToLocalChecked(), Nan::New<v8::Object>());                  \
+    structs->Set(Nan::New(STR(type)).ToLocalChecked(), _struct);                                 \
   }
 
 void InitTypedefs(v8::Local<v8::Object> exports)

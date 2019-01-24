@@ -24,10 +24,11 @@ steps:
       versionSpec: "8.x"
     displayName: "Install Node.js"
 
-  - script: |
-      npm install
-      npm test
-    displayName: "npm install and test"
+  - script: npm install
+    displayName: "npm install"
+
+  - script: npm test
+    displayName: "npm test"
 
   - task: PublishTestResults@2
     condition: succeededOrFailed()

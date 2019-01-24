@@ -5,7 +5,7 @@
   "main": "lib/twainh.js",
   "scripts": {
     "pretest": "node-gyp rebuild --directory test",
-    "test": "mocha -gc --reporter mocha-junit-reporter"
+    "test": "node node_modules/mocha/bin/mocha -gc --reporter mocha-junit-reporter"
   },
   "repository": {
     "type": "git",

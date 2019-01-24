@@ -4,7 +4,8 @@
   "description": "A JavaScript interface for TWAIN.",
   "main": "lib/twainh.js",
   "scripts": {
-    "test": "node-gyp rebuild --directory test && mocha -gc --reporter mocha-junit-reporter"
+    "pretest": "node-gyp rebuild --directory test",
+    "test": "node node_modules/mocha/bin/mocha -gc --reporter mocha-junit-reporter"
   },
   "repository": {
     "type": "git",

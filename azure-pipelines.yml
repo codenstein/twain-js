@@ -24,15 +24,14 @@ steps:
       versionSpec: "8.x"
     displayName: "Install Node.js"
 
-  - script: |
-      npm install
-      # Output useful info for debugging
-      node -p process.platform
-      node -p process.arch
-      npm test
-    displayName: "npm install and test"
+  - script: npm install
+    displayName: "npm install"
+
+  - script: npm test
+    displayName: "npm test"
 
   - task: PublishTestResults@2
+    displayName: "Publish test results"
     condition: succeededOrFailed()
     inputs:
       testRunner: JUnit

@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.1] - 2019-01-23
+
 ### Added
 
 - Azure pipelines, status badge, and junit test results.
@@ -20,4 +22,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Linux type definitions, and pack(2) parameter for ref-struct.
 
-[unreleased]: https://github.com/codenstein/twain-js/compare/0.0.0...HEAD
+[unreleased]: https://github.com/codenstein/twain-js/compare/0.0.1...HEAD
+[0.0.1]: https://github.com/codenstein/twain-js/compare/0.0.0...0.0.1

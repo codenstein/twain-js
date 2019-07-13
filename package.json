@@ -1,5 +1,5 @@
 {
-  "name": "twain-js",
+  "name": "@codenstein/twain-js",
   "version": "0.0.1",
   "description": "A JavaScript interface for TWAIN.",
   "main": "lib/twainh.js",

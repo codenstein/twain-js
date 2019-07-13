@@ -1,6 +1,6 @@
 {
   "name": "@codenstein/twain-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A JavaScript interface for TWAIN.",
   "main": "lib/twainh.js",
   "scripts": {

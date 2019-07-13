@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.2] - 2019-07-13
+
 ### Fixed
 
 - Window specific build issues.
@@ -26,5 +28,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Linux type definitions, and pack(2) parameter for ref-struct.
 
-[unreleased]: https://github.com/codenstein/twain-js/compare/0.0.1...HEAD
+[unreleased]: https://github.com/codenstein/twain-js/compare/0.0.2...HEAD
+[0.0.2]: https://github.com/codenstein/twain-js/compare/0.0.1...0.0.2
 [0.0.1]: https://github.com/codenstein/twain-js/compare/0.0.0...0.0.1
